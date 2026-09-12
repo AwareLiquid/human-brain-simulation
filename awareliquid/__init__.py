@@ -6,8 +6,9 @@ from .masks import longtail_mask, smallworld_mask
 from .neurons import surrogate_spike
 from .layers import SparseLIF
 from .models import SparseSNN
+from .recurrent import RecurrentSNN
 
 __all__ = [
     "longtail_mask", "smallworld_mask",
-    "surrogate_spike", "SparseLIF", "SparseSNN",
+    "surrogate_spike", "SparseLIF", "SparseSNN", "RecurrentSNN",
 ]
