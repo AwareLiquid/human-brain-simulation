@@ -17,8 +17,8 @@ class RecurrentSNN(nn.Module):
         self.decay = decay
         self.threshold = threshold
         self.hid_dim = hid_dim
-        self.w_in = nn.Parameter(torch.randn(hid_dim, in_dim).abs() * init_scale * sign_in)
-        self.w_rec = nn.Parameter(torch.randn(hid_dim, hid_dim).abs() * init_scale * sign_rec)
+        self.w_in = nn.Parameter(torch.randn(hid_dim, in_dim, device=sign_in.device).abs() * init_scale * sign_in)
+        self.w_rec = nn.Parameter(torch.randn(hid_dim, hid_dim, device=sign_rec.device).abs() * init_scale * sign_rec)
         self.register_buffer('mask_in', mask_in)     # (hid, in)
         self.register_buffer('mask_rec', mask_rec)   # (hid, hid)
         self.readout = nn.Linear(hid_dim, out_dim)

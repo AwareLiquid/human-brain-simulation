@@ -19,7 +19,7 @@ class SparseLIF(nn.Module):
         self.threshold = threshold
         self.out_dim = out_dim
         # 权重幅度可训练, 符号(E/I)作为初始化先验
-        self.w = nn.Parameter(torch.randn(out_dim, in_dim).abs() * init_scale * sign)
+        self.w = nn.Parameter(torch.randn(out_dim, in_dim, device=sign.device).abs() * init_scale * sign)
         self.register_buffer('mask', mask)          # (out_dim, in_dim) 0/1
 
     @property

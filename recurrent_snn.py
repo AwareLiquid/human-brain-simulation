@@ -36,8 +36,8 @@ class RecurrentSNN(nn.Module):
         self.T = T
         self.decay = decay
         self.threshold = threshold
-        self.w_ff = nn.Parameter(torch.randn(hid_dim, in_dim).abs() * 0.05 * sign_ff)
-        self.w_rec = nn.Parameter(torch.randn(hid_dim, hid_dim).abs() * 0.02 * sign_rec)
+        self.w_ff = nn.Parameter(torch.randn(hid_dim, in_dim, device=sign_ff.device).abs() * 0.05 * sign_ff)
+        self.w_rec = nn.Parameter(torch.randn(hid_dim, hid_dim, device=sign_rec.device).abs() * 0.02 * sign_rec)
         self.register_buffer('mask_ff', mask_ff)
         self.register_buffer('mask_rec', mask_rec)
         self.w_out = nn.Parameter(torch.randn(out_dim, hid_dim) * 0.05)
