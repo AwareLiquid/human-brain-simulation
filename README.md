@@ -12,7 +12,7 @@ Sparse spiking SNN (surrogate-gradient trained, long-tail + small-world + E/I ma
 
 | Task | Dense MLP | Sparse SNN | Gap | Energy saved |
 |---|---|---|---|---|
-| MNIST | 98.32% | 96.69% | 1.6 pts | **105×** |
+| MNIST (2-layer) | 98.32% | 96.84% | 1.5 pts | **105×** |
 | Fashion-MNIST | 87.56% | 87.17% | **0.4 pts** | **106×** |
 
 **Takeaway**: brain-inspired sparsity + event-driven spikes deliver **near-lossless accuracy at ~2 orders of magnitude lower energy**, and the gap keeps shrinking with training.
@@ -35,6 +35,14 @@ A systematic investigation into whether the real connectome topology is a "natur
 ## Project structure
 
 ```
+awareliquid/           Reusable library (pip-installable style)
+  __init__.py
+  masks.py             Mask generators (long-tail + small-world + E/I)
+  neurons.py           LIF neuron (surrogate gradient)
+  layers.py            Sparse LIF layer (dense train / sparse inference)
+  models.py            Multi-layer sparse SNN
+benchmark.py           Multi-layer validation + sparse-vs-dense speed test
+full_benchmark.py      Full-data training
 pipeline.py            MaleCNS feather → signed sparse adjacency matrix
 engine.py              LIF reservoir engine + 3 topology generators
 bakeoff.py             Experiment 1: static classification bake-off
