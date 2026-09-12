@@ -47,6 +47,8 @@ full_benchmark.py      Full-data training
 sequential_mnist.py    sMNIST temporal task (recurrent SNN vs GRU)
 convert_snn.py         ANN→SNN conversion (feedforward, firing-rate coding)
 recurrent_conversion.py  ANN→SNN conversion (recurrent)
+spike_recurrent.py     Spike-based recurrent training (conversion init + fine-tune)
+scale_benchmark.py     Depth/width scaling curve
 pipeline.py            MaleCNS feather → signed sparse adjacency matrix
 engine.py              LIF reservoir engine + 3 topology generators
 bakeoff.py             Experiment 1: static classification bake-off
