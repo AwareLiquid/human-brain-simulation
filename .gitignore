@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Data (large files, downloaded via download_data.py)
+data/
+*.feather
+*.npz
+*.gz
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# opencode / tool internals
+.omo/
+.codegraph/
