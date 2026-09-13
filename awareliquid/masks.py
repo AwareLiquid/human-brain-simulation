@@ -4,10 +4,11 @@ import torch
 import networkx as nx
 
 
-def longtail_mask(out_dim, in_dim, density, e_ratio=0.6, seed=0):
+def longtail_mask(out_dim, in_dim, density, e_ratio=0.6, inh_gain=1.0, seed=0):
     """长尾(幂律)度分布掩码 + E/I 符号。返回 (mask, sign), 形状 (out_dim, in_dim)。
 
     D 规律: 果蝇连接组度分布 max/mean≈75 (无标度), E/I = 60/40。
+    inh_gain: 抑制权重增益 (H01 人脑实测抑制是兴奋 ~4 倍)。
     """
     rng = np.random.default_rng(seed)
     avg_deg = density * in_dim
@@ -18,7 +19,7 @@ def longtail_mask(out_dim, in_dim, density, e_ratio=0.6, seed=0):
     for i, d in enumerate(degs):
         cols = rng.choice(in_dim, size=d, replace=False)
         mask[i, cols] = 1.0
-        sign[i, cols] = np.where(rng.random(d) < e_ratio, 1.0, -1.0).astype(np.float32)
+        sign[i, cols] = np.where(rng.random(d) < e_ratio, 1.0, -inh_gain).astype(np.float32)
     return torch.tensor(mask), torch.tensor(sign)
 
 
