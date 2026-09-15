@@ -24,14 +24,25 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def load_data(dataset):
     """返回 (Xtr, ytr, Xte, yte, in_dim, num_classes)。"""
     if dataset == 'cifar10':
-        from torchvision import datasets, transforms
-        tf = transforms.Compose([transforms.ToTensor()])
-        train = datasets.CIFAR10('data/cifar10', train=True, download=True, transform=tf)
-        test = datasets.CIFAR10('data/cifar10', train=False, download=True, transform=tf)
-        Xtr = train.data.astype(np.float32).reshape(-1, 3 * 32 * 32) / 255.0
-        ytr = np.array(train.targets, dtype=np.int64)
-        Xte = test.data.astype(np.float32).reshape(-1, 3 * 32 * 32) / 255.0
-        yte = np.array(test.targets, dtype=np.int64)
+        import os, pickle, tarfile, urllib.request
+        tar_path = 'data/cifar10-python.tar.gz'
+        if not os.path.exists(tar_path):
+            print("  下载 CIFAR-10 (~170MB)...")
+            urllib.request.urlretrieve('https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz', tar_path)
+        def load_batch(tf, name):
+            f = tf.extractfile(f'cifar-10-batches-py/{name}')
+            d = pickle.load(f, encoding='bytes')
+            return d[b'data'], np.array(d[b'labels'])
+        with tarfile.open(tar_path) as tf:
+            Xs, ys = [], []
+            for i in range(1, 6):
+                X, y = load_batch(tf, f'data_batch_{i}')
+                Xs.append(X); ys.append(y)
+            Xtr = np.concatenate(Xs).astype(np.float32) / 255.0
+            ytr = np.concatenate(ys).astype(np.int64)
+            Xte, yte = load_batch(tf, 'test_batch')
+            Xte = Xte.astype(np.float32) / 255.0
+            yte = yte.astype(np.int64)
         return Xtr, ytr, Xte, yte, 3 * 32 * 32, 10
 
     # mnist / fashion: numpy
