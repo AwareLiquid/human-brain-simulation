@@ -35,6 +35,7 @@ class SparseSNN(nn.Module):
         self.decay = decay
         self.threshold = threshold
         # 权重幅度可训练, 符号(E/I)作为初始化先验
+        # (device=sign.device: 修复 CUDA 下 randn(CPU) 与 sign(GPU) 不同设备报错)
         self.w_hid = nn.Parameter(torch.randn(hid_dim, in_dim, device=sign.device).abs() * 0.05 * sign)
         self.register_buffer('mask', mask)   # (hid_dim, in_dim) 0/1
         self.w_out = nn.Parameter(torch.randn(out_dim, hid_dim) * 0.05)

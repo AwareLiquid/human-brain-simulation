@@ -11,6 +11,10 @@ data/
 *.npz
 *.gz
 
+# Checkpoints (binaries — published on HF: AwareLiquid/Sparse-SNN)
+checkpoints/
+*.pt
+
 # OS / editor
 .DS_Store
 Thumbs.db
