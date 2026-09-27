@@ -1,0 +1,37 @@
+=== 训练 VGG SNN (T=5) ===
+    epoch 1/30: loss=1.5386
+    epoch 2/30: loss=1.1799
+    epoch 3/30: loss=0.9903
+    epoch 4/30: loss=0.8419
+    epoch 5/30: loss=0.7451
+    epoch 6/30: loss=0.6898
+    epoch 7/30: loss=0.6412
+    epoch 8/30: loss=0.5732
+    epoch 9/30: loss=0.4820
+    epoch 10/30: loss=0.4407
+    epoch 11/30: loss=0.3812
+    epoch 12/30: loss=0.3338
+    epoch 13/30: loss=0.3374
+    epoch 14/30: loss=0.3055
+    epoch 15/30: loss=0.2721
+    epoch 16/30: loss=0.2544
+    epoch 17/30: loss=0.2516
+    epoch 18/30: loss=0.2241
+    epoch 19/30: loss=0.1992
+    epoch 20/30: loss=0.1844
+    epoch 21/30: loss=0.1800
+    epoch 22/30: loss=0.1731
+    epoch 23/30: loss=0.1787
+    epoch 24/30: loss=0.1655
+    epoch 25/30: loss=0.1367
+    epoch 26/30: loss=0.1421
+    epoch 27/30: loss=0.1487
+    epoch 28/30: loss=0.1356
+    epoch 29/30: loss=0.1413
+    epoch 30/30: loss=0.1326
+实测 firing rate: 0.0180
+
+=== 能耗对比 ===
+稠密 CNN: 3.06e+08 FLOPs -> 1130.5 mJ
+脉冲卷积: 1.38e+07 加法 -> 12.4 mJ
+能耗比: 91.2x

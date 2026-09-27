@@ -1,0 +1,48 @@
+=== 卷积 SNN 训练 (CIFAR-10) ===
+device=cuda T=5 epochs=20
+数据: train=50000 test=10000 shape=(50000, 3, 32, 32)
+    epoch 1/20: loss=1.8393
+    epoch 2/20: loss=1.5285
+    epoch 3/20: loss=1.3959
+    epoch 4/20: loss=1.3035
+    epoch 5/20: loss=1.2340
+    epoch 6/20: loss=1.1714
+    epoch 7/20: loss=1.0995
+    epoch 8/20: loss=1.0428
+    epoch 9/20: loss=0.9839
+    epoch 10/20: loss=0.9315
+    epoch 11/20: loss=0.8801
+    epoch 12/20: loss=0.8319
+    epoch 13/20: loss=0.7879
+    epoch 14/20: loss=0.7489
+    epoch 15/20: loss=0.7060
+    epoch 16/20: loss=0.6691
+    epoch 17/20: loss=0.6303
+    epoch 18/20: loss=0.5977
+    epoch 19/20: loss=0.5634
+    epoch 20/20: loss=0.5351
+
+卷积 SNN: 准确率=0.6316  用时=102s
+    epoch 1/20: loss=1.5144
+    epoch 2/20: loss=1.0934
+    epoch 3/20: loss=0.9003
+    epoch 4/20: loss=0.7744
+    epoch 5/20: loss=0.6926
+    epoch 6/20: loss=0.6175
+    epoch 7/20: loss=0.5490
+    epoch 8/20: loss=0.4850
+    epoch 9/20: loss=0.4272
+    epoch 10/20: loss=0.3691
+    epoch 11/20: loss=0.3261
+    epoch 12/20: loss=0.2731
+    epoch 13/20: loss=0.2338
+    epoch 14/20: loss=0.1964
+    epoch 15/20: loss=0.1646
+    epoch 16/20: loss=0.1419
+    epoch 17/20: loss=0.1209
+    epoch 18/20: loss=0.1064
+    epoch 19/20: loss=0.0967
+    epoch 20/20: loss=0.0835
+稠密 CNN: 准确率=0.7506  用时=18s
+
+差距: 0.1190 点

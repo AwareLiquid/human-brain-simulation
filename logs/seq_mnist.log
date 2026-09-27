@@ -1,0 +1,33 @@
+=== 稠密 GRU 基线 (sMNIST 28 步) ===
+    epoch 1: loss=1.0273
+    epoch 2: loss=0.3573
+    epoch 3: loss=0.1981
+    epoch 4: loss=0.1238
+    epoch 5: loss=0.0894
+    epoch 6: loss=0.0680
+    epoch 7: loss=0.0568
+    epoch 8: loss=0.0522
+  准确率=0.9605  用时=11s
+
+=== 递归 SNN (小世界递归, sMNIST 28 步, 梯度裁剪 + 15 epochs) ===
+    epoch 1: loss=2.2416
+    epoch 2: loss=2.0211
+    epoch 3: loss=1.8902
+    epoch 4: loss=1.7888
+    epoch 5: loss=1.7226
+    epoch 6: loss=1.6447
+    epoch 7: loss=1.5108
+    epoch 8: loss=1.3926
+    epoch 9: loss=1.2948
+    epoch 10: loss=1.2254
+    epoch 11: loss=1.1673
+    epoch 12: loss=1.1167
+    epoch 13: loss=1.0572
+    epoch 14: loss=1.0136
+    epoch 15: loss=0.9675
+  准确率=0.6595  总稀疏度=0.939  用时=48s
+
+=== 对比 ===
+  稠密 GRU: 0.9605
+  递归 SNN: 0.6595  (稀疏度 0.939)
+  差距: 0.3010 点

@@ -1,0 +1,49 @@
+=== 大规模稀疏 SNN 训练 ===
+device=cuda  dataset=cifar10  hidden=2000  layers=3  density=0.05  epochs=20
+数据: train=50000  test=10000  in_dim=3072
+模型: 稀疏度=0.950 (95.0% 稀疏)
+    epoch 1/20: loss=2.6494
+    epoch 2/20: loss=1.8206
+    epoch 3/20: loss=1.6662
+    epoch 4/20: loss=1.5793
+    epoch 5/20: loss=1.5221
+    epoch 6/20: loss=1.4829
+    epoch 7/20: loss=1.4457
+    epoch 8/20: loss=1.4205
+    epoch 9/20: loss=1.4032
+    epoch 10/20: loss=1.3917
+    epoch 11/20: loss=1.3815
+    epoch 12/20: loss=1.3732
+    epoch 13/20: loss=1.3697
+    epoch 14/20: loss=1.3622
+    epoch 15/20: loss=1.3569
+    epoch 16/20: loss=1.3525
+    epoch 17/20: loss=1.3517
+    epoch 18/20: loss=1.3551
+    epoch 19/20: loss=1.3443
+    epoch 20/20: loss=1.3462
+
+稀疏 SNN: 准确率=0.4744  能耗省 106x  用时=343s
+    epoch 1/20: loss=1.8771
+    epoch 2/20: loss=1.6865
+    epoch 3/20: loss=1.5889
+    epoch 4/20: loss=1.5153
+    epoch 5/20: loss=1.4744
+    epoch 6/20: loss=1.4316
+    epoch 7/20: loss=1.3885
+    epoch 8/20: loss=1.3548
+    epoch 9/20: loss=1.3155
+    epoch 10/20: loss=1.2787
+    epoch 11/20: loss=1.2428
+    epoch 12/20: loss=1.2033
+    epoch 13/20: loss=1.1540
+    epoch 14/20: loss=1.1094
+    epoch 15/20: loss=1.0511
+    epoch 16/20: loss=1.0013
+    epoch 17/20: loss=0.9373
+    epoch 18/20: loss=0.8793
+    epoch 19/20: loss=0.8038
+    epoch 20/20: loss=0.7411
+稠密 MLP: 准确率=0.5073  用时=68s
+
+差距: 0.0329 点 | 能耗省 106x
