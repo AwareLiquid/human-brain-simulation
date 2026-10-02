@@ -26,7 +26,7 @@ def uniform_mask_ei(hid_dim, in_dim, density, e_ratio=0.6, seed=0):
 def main():
     Xtr, ytr, Xte, yte = load_mnist()
     in_dim, hid_dim, out_dim = 784, 800, 10
-    n_train, epochs, density = 20000, 6, 0.05
+    n_train, epochs, density = 60000, 6, 0.05
 
     # 四组: (名称, 掩码函数, E/I 比例)
     configs = [
@@ -40,11 +40,11 @@ def main():
     results = []
     for name, mask_fn, e_ratio in configs:
         accs, frs = [], []
-        for seed in [0, 1, 2]:
+        for seed in list(range(10)):
             mask, sign = mask_fn(hid_dim, in_dim, density, e_ratio=e_ratio, seed=seed)
             snn = SparseSNN(in_dim, hid_dim, out_dim, mask.to(device), sign.to(device)).to(device)
             train_model(snn, Xtr[:n_train], ytr[:n_train], epochs)
-            acc, fr = evaluate(snn, Xte[:2000], yte[:2000])
+            acc, fr = evaluate(snn, Xte[:10000], yte[:10000])
             accs.append(acc); frs.append(fr)
         m, s = np.mean(accs), np.std(accs)
         results.append((name, m, s, np.mean(frs)))
